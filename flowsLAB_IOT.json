@@ -47,8 +47,8 @@
         "none": "true",
         "repeat": "",
         "once": false,
-        "x": 440,
-        "y": 240,
+        "x": 340,
+        "y": 200,
         "wires": [
             [
                 "34b043da8adbf261"
@@ -96,8 +96,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 240,
+        "x": 600,
+        "y": 200,
         "wires": []
     }
 ]
