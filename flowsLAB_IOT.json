@@ -24,10 +24,10 @@
         "slot": "1",
         "payload": [
             {
-                "S7_Type": "DB",
-                "S7_DBnum": "2",
-                "S7_Datatype": "B",
-                "S7_Offset": "0",
+                "S7_Type": "I",
+                "S7_DBnum": "1",
+                "S7_Datatype": "X",
+                "S7_Offset": "0..7",
                 "S7_BitOffset": "0",
                 "S7_Quantity": "1",
                 "S7_Name": "box"
@@ -62,12 +62,12 @@
         "slot": "1",
         "payload": [
             {
-                "S7_Type": "I",
-                "S7_DBnum": "0",
-                "S7_Datatype": "X",
-                "S7_Offset": "0",
+                "S7_Type": "DB",
+                "S7_DBnum": "2",
+                "S7_Datatype": "B",
+                "S7_Offset": "2416",
                 "S7_BitOffset": "0",
-                "S7_Quantity": "1",
+                "S7_Quantity": "4",
                 "S7_Name": "Box"
             }
         ]
@@ -94,7 +94,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 100,
+        "y": 160,
         "wires": [
             [
                 "63bf34eabebb7be6"
@@ -115,17 +115,76 @@
         "repeat": "",
         "once": false,
         "x": 320,
-        "y": 100,
+        "y": 160,
+        "wires": [
+            [
+                "69564ddeaae4d581",
+                "f6db28c508646727"
+            ]
+        ]
+    },
+    {
+        "id": "f6db28c508646727",
+        "type": "buffer-parser",
+        "z": "5f7e5a0dcb8bbbb4",
+        "name": "",
+        "data": "payload.value",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatbe",
+                "name": "gewicht",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 590,
+        "y": 160,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "69564ddeaae4d581",
+        "type": "debug",
+        "z": "5f7e5a0dcb8bbbb4",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 80,
+        "wires": []
     },
     {
         "id": "bdbc410a65bd8c27",
         "type": "s7comm read",
         "z": "7e77ef592b55f36a",
         "connection": "7a60732a5d13c3a7",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"2\",\"S7_Datatype\":\"B\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"box\"}",
+        "payload": "{\"S7_Type\":\"I\",\"S7_DBnum\":\"1\",\"S7_Datatype\":\"X\",\"S7_Offset\":\"0..7\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"box\"}",
         "s7Name": "box",
         "topic": "",
         "name": "",
@@ -145,7 +204,7 @@
         "id": "987c97068e5a3595",
         "type": "inject",
         "z": "7e77ef592b55f36a",
-        "name": "",
+        "name": "PLC_Client",
         "props": [
             {
                 "p": "payload"
@@ -162,7 +221,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
+        "x": 150,
         "y": 200,
         "wires": [
             [
@@ -191,7 +250,7 @@
         "type": "s7comm read",
         "z": "7e77ef592b55f36a",
         "connection": "9714b4c5c5d0d528",
-        "payload": "{\"S7_Type\":\"I\",\"S7_DBnum\":\"0\",\"S7_Datatype\":\"X\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"Box\"}",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"2\",\"S7_Datatype\":\"B\",\"S7_Offset\":\"2416\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"4\",\"S7_Name\":\"Box\"}",
         "s7Name": "Box",
         "topic": "",
         "name": "",
@@ -203,7 +262,8 @@
         "y": 280,
         "wires": [
             [
-                "dfbcb52b8a59c48f"
+                "dfbcb52b8a59c48f",
+                "f90e5c0844d25cd8"
             ]
         ]
     },
@@ -211,7 +271,7 @@
         "id": "f64d72c831351577",
         "type": "inject",
         "z": "7e77ef592b55f36a",
-        "name": "",
+        "name": "PLC_Reciever",
         "props": [
             {
                 "p": "payload"
@@ -228,7 +288,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
+        "x": 150,
         "y": 280,
         "wires": [
             [
@@ -248,8 +308,48 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 600,
-        "y": 280,
+        "x": 460,
+        "y": 360,
         "wires": []
+    },
+    {
+        "id": "f90e5c0844d25cd8",
+        "type": "buffer-parser",
+        "z": "7e77ef592b55f36a",
+        "name": "",
+        "data": "payload.value",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatbe",
+                "name": "gewicht",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 650,
+        "y": 280,
+        "wires": [
+            []
+        ]
     }
 ]
