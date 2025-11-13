@@ -1,0 +1,12 @@
+{
+    "name": "Lab_IOT",
+    "description": "koppeling met S7-1200",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flowsLAB_IOT.json",
+            "credentialsFile": "flowsLAB_IOT_cred.json"
+        }
+    }
+}
