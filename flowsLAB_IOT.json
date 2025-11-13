@@ -1,1 +1,103 @@
-[]
+[
+    {
+        "id": "5f7e5a0dcb8bbbb4",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7e77ef592b55f36a",
+        "type": "tab",
+        "label": "simatic",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7a60732a5d13c3a7",
+        "type": "s7comm",
+        "ip": "127.0.0.1",
+        "port": "102",
+        "rack": "0",
+        "slot": "1",
+        "payload": [
+            {
+                "S7_Type": "DB",
+                "S7_DBnum": "2",
+                "S7_Datatype": "B",
+                "S7_Offset": "0",
+                "S7_BitOffset": "0",
+                "S7_Quantity": "1",
+                "S7_Name": "test"
+            }
+        ]
+    },
+    {
+        "id": "bdbc410a65bd8c27",
+        "type": "s7comm read",
+        "z": "7e77ef592b55f36a",
+        "connection": "7a60732a5d13c3a7",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"2\",\"S7_Datatype\":\"B\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"test\"}",
+        "s7Name": "test",
+        "topic": "",
+        "name": "",
+        "signalSetted": false,
+        "none": "true",
+        "repeat": "",
+        "once": false,
+        "x": 440,
+        "y": 240,
+        "wires": [
+            [
+                "34b043da8adbf261"
+            ]
+        ]
+    },
+    {
+        "id": "987c97068e5a3595",
+        "type": "inject",
+        "z": "7e77ef592b55f36a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 60,
+        "y": 200,
+        "wires": [
+            [
+                "bdbc410a65bd8c27"
+            ]
+        ]
+    },
+    {
+        "id": "34b043da8adbf261",
+        "type": "debug",
+        "z": "7e77ef592b55f36a",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 240,
+        "wires": []
+    }
+]
